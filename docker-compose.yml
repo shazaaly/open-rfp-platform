@@ -1,0 +1,53 @@
+# This is the version of the Docker Compose file format
+version: '3'
+
+# Define the services that will be run by Docker Compose
+services:
+  # Service for the NestJS application
+  app:
+    # The build context for the application, Docker will use the current directory (.)
+    build: .
+
+      
+    # The name for the container running the application
+    container_name: rfp-app
+    
+    # Mapping the container port 3000 to the host machine's port 3000
+    ports:
+      - "3000:3000"
+    
+    # Specifies the environment variables to load from the .env file
+    env_file: 
+      - .env # Load the environment variables from the .env file
+    
+    # Define the networks the container should join
+    networks:
+      - nest-network
+
+  # Service for the PostgreSQL database
+  postgres:
+    # The Docker image to use for the PostgreSQL database
+    image: postgres:alpine
+
+    # The name for the container running PostgreSQL
+    container_name: postgres
+
+    # Set the environment variables required for the PostgreSQL container
+    environment:
+      POSTGRES_USER: $POSTGRES_USER              # Default PostgreSQL username
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD      # Default PostgreSQL password
+      POSTGRES_DB: $POSTGRES_DB                  # Name of the default database
+
+    # Mapping the container port 5432 (PostgreSQL's default port) to the host machine's port 5432
+    ports:
+      - "5400:5432"
+    
+    # Define the networks the container should join
+    networks:
+      - nest-network
+
+# Define custom networks for Docker Compose to use
+networks:
+  nest-network:
+    # The type of network (bridge network is the default in Docker)
+    driver: bridge
