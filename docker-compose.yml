@@ -14,7 +14,7 @@ services:
     
     # Mapping the container port 3000 to the host machine's port 3000
     ports:
-      - "3000:3000"
+      - "3001:3001"
     
     # Specifies the environment variables to load from the .env file
     env_file: 
