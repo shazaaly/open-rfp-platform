@@ -41,6 +41,8 @@ services:
     # Mapping the container port 5432 (PostgreSQL's default port) to the host machine's port 5432
     ports:
       - "5400:5432"
+    volumes:
+      - rfp-postgres-data:/var/lib/postgresql/data
     
     # Define the networks the container should join
     networks:
@@ -51,3 +53,6 @@ networks:
   nest-network:
     # The type of network (bridge network is the default in Docker)
     driver: bridge
+
+volumes:
+  rfp-postgres-data:
