@@ -1,15 +1,15 @@
 {
-    "compilerOptions": {
-      "module": "commonjs",
-      "target": "es2017",
-      "sourceMap": true,
-      "outDir": "./dist",
-      "rootDir": "./",
-      "strict": true,
-      "esModuleInterop": true,
-      "skipLibCheck": true,
-      "forceConsistentCasingInFileNames": true
-    },
-    "include": ["*.ts", "src/app.module.ts", "src/main.ts"],
-    "exclude": ["node_modules", "dist"]
-  }
+  "compilerOptions": {
+    "outDir": "./dist",         // هذا لازم يكون موجود عشان يحدد أين يروح الكود بعد البناء
+    "rootDir": "./src",         // تحديد مصدر الملفات
+    "target": "ES6",            // تحديد النسخة المستهدفة من JavaScript
+    "module": "CommonJS",       // تحديد نوع الموديول (يعني Node.js هنا)
+    "moduleResolution": "node", // تحديد طريقة حل الموديولات
+    "esModuleInterop": true,    // دعم ES modules في CommonJS
+    "skipLibCheck": true,       // لتخطي التحقق من المكتبات
+    "forceConsistentCasingInFileNames": true // التأكد من الكتابة المتسقة للأسماء
+  },
+  "include": [
+    "src/**/*.ts"  // تأكد من أن جميع الملفات في مجلد src سيتم تجميعها
+  ]
+}
